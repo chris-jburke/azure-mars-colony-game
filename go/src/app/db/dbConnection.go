@@ -27,7 +27,7 @@ func (db dbConnection) Open() (*gorm.DB, error) {
 	}
 	sqlhost := os.Getenv("SQLHOST")
 	if sqlhost == "" {
-		sqlhost = "localhost"
+		sqlhost = "mars-colony-db.postgres.database.azure.com"
 	}
 	sqldb := os.Getenv("SQLDB")
 	if sqldb == "" {
@@ -35,13 +35,13 @@ func (db dbConnection) Open() (*gorm.DB, error) {
 	}
 	sqluser := os.Getenv("SQLUSER")
 	if sqluser == "" {
-		sqluser = "postgres"
+		sqluser = "cjburke@mars-colony-db"
 	}
 	sqlpassword := os.Getenv("SQLPASSWORD")
 	if sqlpassword == "" {
-		sqlpassword = "postgres"
+		sqlpassword = "Slowjazz12"
 	}
-	dbURI := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", sqlhost, sqluser, sqlpassword, sqldb)
+	dbURI := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=require", sqlhost, sqluser, sqlpassword, sqldb)
 	conn, err := gorm.Open("postgres", dbURI)
 	if err == nil {
 		db.conn = conn
