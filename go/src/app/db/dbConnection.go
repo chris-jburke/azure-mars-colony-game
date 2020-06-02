@@ -35,11 +35,11 @@ func (db dbConnection) Open() (*gorm.DB, error) {
 	}
 	sqluser := os.Getenv("SQLUSER")
 	if sqluser == "" {
-		sqluser = "cjburke@mars-colony-db"
+		sqluser = ""
 	}
 	sqlpassword := os.Getenv("SQLPASSWORD")
 	if sqlpassword == "" {
-		sqlpassword = "Smoothjazz12"
+		sqlpassword = ""
 	}
 	dbURI := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=require", sqlhost, sqluser, sqlpassword, sqldb)
 	conn, err := gorm.Open("postgres", dbURI)
