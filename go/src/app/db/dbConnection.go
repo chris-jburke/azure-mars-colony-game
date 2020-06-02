@@ -31,7 +31,7 @@ func (db dbConnection) Open() (*gorm.DB, error) {
 	}
 	sqldb := os.Getenv("SQLDB")
 	if sqldb == "" {
-		sqldb = "localdb"
+		sqldb = "postgres"
 	}
 	sqluser := os.Getenv("SQLUSER")
 	if sqluser == "" {
@@ -39,7 +39,7 @@ func (db dbConnection) Open() (*gorm.DB, error) {
 	}
 	sqlpassword := os.Getenv("SQLPASSWORD")
 	if sqlpassword == "" {
-		sqlpassword = "Slowjazz12"
+		sqlpassword = "Smoothjazz12"
 	}
 	dbURI := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=require", sqlhost, sqluser, sqlpassword, sqldb)
 	conn, err := gorm.Open("postgres", dbURI)
